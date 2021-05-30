@@ -9,7 +9,7 @@ import io.ktor.features.*
 import io.ktor.application.*
 import io.ktor.response.*
 import io.ktor.request.*
-import com.example.plugins.*
+import tech.nerostarx.plugins.*
 import kotlin.test.*
 import io.ktor.server.testing.*
 
