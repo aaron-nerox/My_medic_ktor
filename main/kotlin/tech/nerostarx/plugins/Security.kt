@@ -12,6 +12,8 @@ fun Application.configureSecurity() {
     authentication {
 
     	    form(name = "auth") {
+				//TODO: search the user from the database
+
     	        userParamName = "user"
     	        passwordParamName = "password"
     	        validate { credentials ->
@@ -27,8 +29,14 @@ fun Application.configureSecurity() {
     routing {
         authenticate("auth") {
             get("/auth/login") {
-                val principal = call.principal<UserIdPrincipal>()!!
-                call.respondText("Hello ${principal.name}")
+                val userPrincipal = call.principal<UserIdPrincipal>()
+
+				if(userPrincipal != null){
+					call.respondText("Hello ${userPrincipal.name}")
+				}else{
+					call.respondText("Password or username error")
+				}
+
             }
         }
     }

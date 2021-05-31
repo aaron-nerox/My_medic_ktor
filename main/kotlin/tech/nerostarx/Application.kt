@@ -12,7 +12,7 @@ fun main(args: Array<String>): Unit =
  * */
 @Suppress("unused") // Referenced in application.conf
 @kotlin.jvm.JvmOverloads
-fun Application.module(testing: Boolean = false) {
+fun Application.module(testing: Boolean = true) {
     configureRouting()
     configureSecurity()
     configureSerialization()
