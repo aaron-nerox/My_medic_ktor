@@ -11,8 +11,8 @@ data class Doctor(
     val docSurname: String,
     val docPhone: String,
     val docSpeciality: String,
-    val docAdrLongi: Long,
-    val docAdrLati: Long)
+    val docAdrLongi: String,
+    val docAdrLati: String)
 
 
 object Doctors: Table(){

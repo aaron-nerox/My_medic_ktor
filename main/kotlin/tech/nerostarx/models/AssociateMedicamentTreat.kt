@@ -14,7 +14,7 @@ data class AssociateMedicamentTreat(
 
 object AssociatesMedicamentTreat: Table(){
     val idAssociation : Column<Int> = integer("id_association").autoIncrement()
-    val id_treatment: Column<Int> = integer("id_treatment")
-    val id_medicament: Column<Int> = integer("id_medicament")
+    val idTreatment: Column<Int> = integer("id_treatment")
+    val idMedicament: Column<Int> = integer("id_medicament")
     override val primaryKey = PrimaryKey(idAssociation)
 }
