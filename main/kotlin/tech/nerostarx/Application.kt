@@ -16,4 +16,5 @@ fun Application.module(testing: Boolean = true) {
     configureRouting()
     configureSecurity()
     configureSerialization()
+
 }

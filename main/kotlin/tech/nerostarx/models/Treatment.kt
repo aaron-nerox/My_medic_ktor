@@ -10,5 +10,4 @@ data class Treatment(
     val idPatient: Int,
     val durationTreatment: String,
     val dateStartTreatment: String,
-    val dateEndTreatment: String
 )

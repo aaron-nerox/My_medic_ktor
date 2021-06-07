@@ -6,9 +6,8 @@ import org.jetbrains.exposed.sql.Table
 
 
 @Serializable
-data class Advice(
-    val idAdvice: Int,
-    val idPatient: Int,
-    val idDoc: Int,
-    val AdviceMessage: String
+data class AssociateMedicamentTreat(
+    val idAssociation: Int,
+    val idTreatment: Int,
+    val idMedicament: Int
 )
