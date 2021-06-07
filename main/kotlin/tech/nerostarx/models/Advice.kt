@@ -12,3 +12,12 @@ data class Advice(
     val idDoc: Int,
     val AdviceMessage: String
 )
+
+object Advices: Table(){
+    val idAdvice: Column<Int> = integer("id_advice").autoIncrement()
+    val idPatient: Column<Int> = integer("id_patient")
+    val idDoc: Column<Int> = integer("id_doctor")
+    val adviceMessage: Column<String> = text("advice_message")
+
+    override val primaryKey = PrimaryKey(idAdvice)
+}
