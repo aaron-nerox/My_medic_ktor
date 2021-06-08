@@ -7,6 +7,7 @@ import org.jetbrains.exposed.sql.Table
 @Serializable
 data class Doctor(
     val idDoc: Int,
+    val docPicUrl: String,
     val docName: String,
     val docSurname: String,
     val docPhone: String,
@@ -17,6 +18,7 @@ data class Doctor(
 
 object Doctors: Table(){
     val idDoc: Column<Int> = integer("id_doc").autoIncrement()
+    val docPicUrl: Column<String> = text("doc_pic_url")
     val docName: Column<String> = text("doc_name")
     val docSurname: Column<String> = text("doc_surname")
     val docPhone: Column<String> = text("doc_phone")
