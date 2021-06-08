@@ -1,13 +1,46 @@
 package tech.nerostarx.routes
 
 import io.ktor.application.*
+import io.ktor.http.*
+import io.ktor.request.*
+import io.ktor.response.*
 import io.ktor.routing.*
+import kotlinx.coroutines.selects.select
+import org.jetbrains.exposed.sql.JoinType
 import org.jetbrains.exposed.sql.ResultRow
+import org.jetbrains.exposed.sql.select
+import org.jetbrains.exposed.sql.selectAll
+import org.jetbrains.exposed.sql.transactions.transaction
+import tech.nerostarx.databases.PGDataBase
 import tech.nerostarx.models.*
 
-fun Application.configureTreatmentRoutes(){
-    routing {
+fun Route.configureTreatmentRoutes(){
+    route("/treatment"){
+        get("/{id_patient}"){
+            val idPatient = call.parameters["id_patient"] ?: return@get call
+                .respondText("invalid id", status = HttpStatusCode.BadRequest)
 
+            val treatments = transaction(PGDataBase.dataBaseInstance){
+                Treatments.select {
+                    Treatments.idPatient eq idPatient.toInt()
+                }.map{ toTreatment(it)}
+            }
+
+            if(!treatments.isNullOrEmpty()){
+                for (treatment in treatments){
+                    val medicamentList = transaction(PGDataBase.dataBaseInstance){
+                        AssociatesMedicamentTreat
+                            .join(Medicaments, JoinType.FULL
+                            ,additionalConstraint = {AssociatesMedicamentTreat.idMedicament eq Medicaments.idMedicament})
+                            .selectAll().map{ toMedicament(it)}
+                    }
+                    treatment.medicamentList.addAll(medicamentList)
+                }
+            }
+
+            call.respond(status = HttpStatusCode.OK, treatments)
+
+        }
     }
 }
 

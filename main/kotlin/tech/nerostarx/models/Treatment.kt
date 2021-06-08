@@ -12,7 +12,7 @@ data class Treatment(
     val idPatient: Int,
     val durationTreatment: String,
     val dateStartTreatment: String,
-    val medicamentList: ArrayList<Medicament>
+    var medicamentList: ArrayList<Medicament>
 )
 
 object Treatments: Table(){
