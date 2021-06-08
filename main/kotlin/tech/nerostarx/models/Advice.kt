@@ -7,7 +7,7 @@ import org.jetbrains.exposed.sql.Table
 
 @Serializable
 data class Advice(
-    val idAdvice: Int,
+    var idAdvice: Int? = null,
     val idPatient: Int,
     val idDoc: Int,
     val AdviceMessage: String
