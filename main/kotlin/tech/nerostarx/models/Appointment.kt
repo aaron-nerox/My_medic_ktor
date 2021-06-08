@@ -7,7 +7,7 @@ import org.jetbrains.exposed.sql.Table
 
 @Serializable
 data class Appointment(
-    val idApt: Int,
+    var idApt: Int? = null,
     val idDoc: Int,
     val idPatient: Int,
     val date: String,
