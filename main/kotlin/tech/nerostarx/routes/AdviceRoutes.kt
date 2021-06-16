@@ -1,6 +1,5 @@
 package tech.nerostarx.routes
 
-
 import io.ktor.application.*
 import io.ktor.http.*
 import io.ktor.request.*
@@ -16,7 +15,9 @@ import tech.nerostarx.models.Advices
 
 
 fun Route.configureAdviceRoutes(){
+
     route("/advice"){
+
         get("{idPatient}"){
             val id = call.parameters["idPatient"] ?: return@get call
                 .respondText("Invalid id", status = HttpStatusCode.BadRequest)
@@ -47,6 +48,7 @@ fun Route.configureAdviceRoutes(){
                 call.respond(HttpStatusCode.InternalServerError, "failed not created")
             }
         }
+
     }
 }
 

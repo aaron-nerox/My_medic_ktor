@@ -43,6 +43,8 @@ fun toDoctor(row: ResultRow): Doctor{
         row[Doctors.docSurname],
         row[Doctors.docPhone],
         row[Doctors.docSpeciality],
+        row[Doctors.startHour],
+        row[Doctors.endHour],
         row[Doctors.docAdrLongi],
         row[Doctors.docAdrLati]
     )

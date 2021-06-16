@@ -12,6 +12,8 @@ data class Doctor(
     val docSurname: String,
     val docPhone: String,
     val docSpeciality: String,
+    val startHour: String,
+    val endHour: String,
     val docAdrLongi: String,
     val docAdrLati: String)
 
@@ -23,6 +25,8 @@ object Doctors: Table(){
     val docSurname: Column<String> = text("doc_surname")
     val docPhone: Column<String> = text("doc_phone")
     val docSpeciality: Column<String> = text("doc_speciality")
+    val startHour: Column<String> = text("start_hour")
+    val endHour: Column<String> = text("end_hour")
     val docAdrLongi: Column<String> = text("doc_adr_longi")
     val docAdrLati: Column<String> = text("doc_adr_lati")
 
