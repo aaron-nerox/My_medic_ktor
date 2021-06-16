@@ -22,7 +22,7 @@ fun Application.configureSecurity() {
     authentication {
 
     	    form(name = "auth") {
-    	        userParamName = "user"
+    	        userParamName = "phone"
     	        passwordParamName = "password"
     	        validate { credentials ->
 					val user = transaction(PGDataBase.dataBaseInstance){

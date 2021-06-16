@@ -43,7 +43,7 @@ fun Route.configureAdviceRoutes(){
             }
 
             if(result != null){
-                call.respond(HttpStatusCode.Created, "sucess created")
+                call.respond(HttpStatusCode.Created, result.map { toAdvice(it) })
             }else{
                 call.respond(HttpStatusCode.InternalServerError, "failed not created")
             }
