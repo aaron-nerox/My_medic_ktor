@@ -6,11 +6,11 @@ import org.jetbrains.exposed.sql.Table
 
 @Serializable
 data class Doctor(
-    val idDoc: Int,
+    val id: Int,
     val docPicUrl: String,
-    val docName: String,
-    val docSurname: String,
-    val docPhone: String,
+    val name: String,
+    val surname: String,
+    val phone: String,
     val docSpeciality: String,
     val startHour: String,
     val endHour: String,
@@ -19,11 +19,11 @@ data class Doctor(
 
 
 object Doctors: Table(){
-    val idDoc: Column<Int> = integer("id_doc").autoIncrement()
+    val idDoc: Column<Int> = integer("id").autoIncrement()
     val docPicUrl: Column<String> = text("doc_pic_url")
-    val docName: Column<String> = text("doc_name")
-    val docSurname: Column<String> = text("doc_surname")
-    val docPhone: Column<String> = text("doc_phone")
+    val docName: Column<String> = text("name")
+    val docSurname: Column<String> = text("surname")
+    val docPhone: Column<String> = text("phone")
     val docSpeciality: Column<String> = text("doc_speciality")
     val startHour: Column<String> = text("start_hour")
     val endHour: Column<String> = text("end_hour")

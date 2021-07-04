@@ -49,7 +49,7 @@ fun Application.configureSecurity() {
 
     routing {
         authenticate("auth") {
-            get("/auth/login") {
+            post("/auth/login") {
                 val userPrincipal = call.principal<UserIdPrincipal>()
 				if(userPrincipal != null){
 					val authUser = transaction(PGDataBase.dataBaseInstance){
